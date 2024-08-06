@@ -1,0 +1,23 @@
+// ----------------------- BLOCK -----------------------
+
+@for $i from 1 through 15 {
+  $value: #{$i}px;
+  .p-#{$i} {
+    padding: $value;
+  }
+  .pl-#{$i} {
+    padding-left: $value;
+  }
+  .pr-#{$i} {
+    padding-right: $value;
+  }
+  .pb-#{$i} {
+    padding-bottom: $value;
+  }
+  .pt-#{$i} {
+    padding-top: $value;
+  }
+}
+
+// ---------------------- ELEMENT ----------------------
+// -------------------- MODIFICATION -------------------

@@ -1,0 +1,23 @@
+// ----------------------- BLOCK -----------------------
+
+@for $i from 1 through 15 {
+  $value: #{$i}px;
+  .m-#{$i} {
+    margin: $value;
+  }
+  .ml-#{$i} {
+    margin-left: $value;
+  }
+  .mr-#{$i} {
+    margin-right: $value;
+  }
+  .mb-#{$i} {
+    margin-bottom: $value;
+  }
+  .mt-#{$i} {
+    margin-top: $value;
+  }
+}
+
+// ---------------------- ELEMENT ----------------------
+// -------------------- MODIFICATION -------------------

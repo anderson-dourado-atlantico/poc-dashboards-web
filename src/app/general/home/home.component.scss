@@ -1,0 +1,17 @@
+.my-card {
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(90%);
+  }
+}
+
+.card-footer {
+  text-align: center;
+  background-color: darkcyan;
+  margin: 0 -5px -5px -5px;
+  border-radius: 0 0 10px 10px;
+  padding: 8px 0;
+  color: white;
+  font-weight: bold;
+}

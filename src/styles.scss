@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@use 'styles/theme/orange-brown-theme';
+@use 'styles/theme/blue-sky-theme';
+@use 'styles/theme/cyan-orange-theme';
+
+$my-theme: orange-brown-theme.$orange-brown-theme;
+
+@use 'styles/components/btn' with (
+  $theme: $my-theme
+);
+
+html {
+  @include mat.all-component-themes($my-theme);
+}
+
+@import 'styles/abstracts/mixins';
+
+@import 'styles/base/main', 'styles/base/margin', 'styles/base/padding';
+
+// html,
+// body {
+//   height: 100%;
+// }
+
+// body {
+//   margin: 0;
+//   font-family: Roboto, 'Helvetica Neue', sans-serif;
+// }
+
+.w-100 {
+  width: 100% !important;
+}
+
+.h-100 {
+  height: 100% !important;
+}
