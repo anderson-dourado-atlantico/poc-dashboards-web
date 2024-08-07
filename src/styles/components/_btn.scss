@@ -8,13 +8,16 @@ $theme: mat.define-theme() !default;
 .btn-color {
   &--error {
     @include mat.button-color($theme, $color-variant: error);
+    @include mat.icon-button-color($theme, $color-variant: error);
   }
 
   &--secondary {
     @include mat.button-color($theme, $color-variant: secondary);
+    @include mat.icon-button-color($theme, $color-variant: secondary);
   }
 
   &--tertiary {
     @include mat.button-color($theme, $color-variant: tertiary);
+    @include mat.icon-button-color($theme, $color-variant: tertiary);
   }
 }

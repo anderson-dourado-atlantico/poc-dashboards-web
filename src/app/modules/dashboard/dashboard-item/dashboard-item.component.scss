@@ -1,0 +1,16 @@
+.dash-content {
+  margin: 5px;
+  display: flex;
+
+  .dash-button {
+    width: 100%;
+    min-height: 50px;
+    justify-content: flex-start;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+    padding-left: 15px;
+    background: #dddeed;
+    border-radius: 5px;
+  }
+}

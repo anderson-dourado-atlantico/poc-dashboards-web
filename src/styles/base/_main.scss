@@ -1,13 +1,15 @@
 html,
 body {
   height: 100vh;
-  min-height: 500px;
+  min-height: 300px;
 
   width: 100%;
-  min-width: 600px;
+  min-width: 450px;
+  overflow: hidden;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: #f4f6f8;
 }

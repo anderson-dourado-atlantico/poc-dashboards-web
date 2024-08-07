@@ -1,0 +1,50 @@
+$padding: 10px;
+
+.panel-history {
+  height: 30px;
+  background-color: green;
+}
+
+.container {
+  padding: $padding;
+  background-color: transparent;
+}
+
+.main-panel {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  height: calc(100vh - 20px);
+  min-height: 300px;
+
+  .filter-panel {
+    background-color: rgb(142, 101, 224);
+    flex: 0 1 auto;
+    padding: 15px;
+  }
+
+  .main-content-panel {
+    background-color: rgb(150, 176, 226);
+    flex: 1 1 70%;
+
+    display: flex;
+    flex-direction: column;
+
+    .content-panel {
+      flex: 1 1 auto;
+      background-color: rgb(208, 218, 237);
+      padding: 10px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      align-content: flex-start;
+
+      .dash-item {
+        flex: 0 1 25%;
+      }
+    }
+  }
+}

@@ -1,3 +1,16 @@
-<div class="container p-10">
-  <h1 class="mat-h1 center">Dashboard works!</h1>
+<div class="container">
+  <div class="main-panel">
+    <div class="main-content-panel">
+      <poc-navigation-history></poc-navigation-history>
+      <div class="filter-panel">filters</div>
+      <div class="content-panel">
+        <poc-dashboard-item
+          class="dash-item"
+          *ngFor="let item of dashboardContent"
+          [name]="item.name"
+          [type]="item.type"
+        ></poc-dashboard-item>
+      </div>
+    </div>
+  </div>
 </div>

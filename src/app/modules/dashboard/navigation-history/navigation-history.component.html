@@ -1,0 +1,9 @@
+<div class="history-container mat-elevation-z4">
+  <button mat-fab class="btn-color--tertiary back-to-home" (click)="goToHome()">
+    <mat-icon>arrow_circle_left</mat-icon>
+  </button>
+
+  <div class="history-items-content">
+    <button *ngFor="let url of history" class="arrow-button">{{ url }}</button>
+  </div>
+</div>
