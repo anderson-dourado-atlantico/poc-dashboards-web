@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core'
-import { NavigationHistoryService } from './navigation-history.service'
+import { Component, effect, output } from '@angular/core'
+import {
+  NavigationHistoryService,
+  NavigationProps,
+} from './navigation-history.service'
 import { MatCardModule } from '@angular/material/card'
 import { CommonModule } from '@angular/common'
 import { MatIconModule } from '@angular/material/icon'
@@ -13,25 +16,42 @@ import { Router } from '@angular/router'
   templateUrl: './navigation-history.component.html',
   styleUrls: ['./navigation-history.component.scss'],
 })
-export class NavigationHistoryComponent implements OnInit {
-  history: string[] = ['root', 'Operações']
+export class NavigationHistoryComponent {
+  histories: NavigationProps[] = []
+  onNavigationHistory = output<string>()
 
   constructor(
     private navigationHistoryService: NavigationHistoryService,
     private router: Router,
-  ) {}
-
-  ngOnInit(): void {
-    // this.history = this.navigationHistoryService.getHistory()
-    console.log(this.navigationHistoryService.getHistory())
+  ) {
+    effect(() => {
+      const newHistories = this.navigationHistoryService.observeChanges
+      if (newHistories) {
+        this._changeHistoryPanel(newHistories)
+      }
+    })
   }
 
-  clearHistory(): void {
+  addNavigation(id: string, name: string) {
+    this.navigationHistoryService.addNavigation(id, name)
+  }
+
+  goToHistory(prop: NavigationProps) {
+    this.navigationHistoryService.changeToHistory(prop)
+    this.onNavigationHistory.emit(prop.id)
+  }
+
+  clearHistory() {
     this.navigationHistoryService.clearHistory()
-    this.history = []
   }
 
   goToHome() {
+    this.navigationHistoryService.clearHistory()
     this.router.navigate(['/'])
+  }
+
+  private _changeHistoryPanel(newHistories: NavigationProps[]) {
+    this.histories.length = 0
+    newHistories.forEach(item => this.histories!.push(item))
   }
 }

@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="main-panel">
+    <div class="main-content-panel">
+      <div class="content-panel">
+        <div class="dash-header">
+          <button mat-flat-button (click)="voltarParaDashboard()">
+            Voltar
+          </button>
+          <h3>{{ dashboard()?.name }}</h3>
+        </div>
+        <iframe [src]="safeUrl()" class="frame-props"></iframe>
+      </div>
+    </div>
+  </div>
+</div>

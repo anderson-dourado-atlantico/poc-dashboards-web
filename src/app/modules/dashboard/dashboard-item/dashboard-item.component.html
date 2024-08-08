@@ -1,6 +1,6 @@
 <div class="dash-content">
-  <button mat-fab extended class="dash-button">
-    <mat-icon>{{ type }}</mat-icon
-    >{{ name }}
+  <button mat-fab extended class="dash-button" (click)="_showContent()">
+    <mat-icon>{{ typeIcon() }}</mat-icon
+    >{{ dashboardItem().name }}
   </button>
 </div>

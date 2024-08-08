@@ -4,6 +4,12 @@
   </button>
 
   <div class="history-items-content">
-    <button *ngFor="let url of history" class="arrow-button">{{ url }}</button>
+    <button
+      *ngFor="let hist of histories"
+      class="arrow-button"
+      (click)="goToHistory(hist)"
+    >
+      {{ hist.name }}
+    </button>
   </div>
 </div>

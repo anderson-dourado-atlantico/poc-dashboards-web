@@ -1,7 +1,11 @@
-import { Component, Input } from '@angular/core'
+import { Component, computed, input, output } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatRippleModule } from '@angular/material/core'
 import { MatIconModule } from '@angular/material/icon'
+import {
+  Dashboard,
+  DashboardType,
+} from '../../../shared/models/dashboard.model'
 
 @Component({
   selector: 'poc-dashboard-item',
@@ -11,18 +15,18 @@ import { MatIconModule } from '@angular/material/icon'
   styleUrl: './dashboard-item.component.scss',
 })
 export class DashboardItemComponent {
-  @Input() name?: string
-  private _type?: string = 'folder'
+  dashboardItem = input.required<Dashboard>()
+  onAccessContent = output<Dashboard>()
 
-  @Input() set type(value) {
-    if (value === 'FOLDER') {
-      this._type = 'folder'
-    } else {
-      this._type = 'bar_chart_4_bars'
+  typeIcon = computed(() => {
+    if (this.dashboardItem().type === DashboardType.FOLDER) {
+      return 'folder'
     }
-  }
 
-  get type() {
-    return this._type
+    return 'bar_chart_4_bars'
+  })
+
+  _showContent() {
+    this.onAccessContent.emit(this.dashboardItem())
   }
 }
