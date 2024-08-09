@@ -22,4 +22,12 @@ export class DashboardService extends ServiceBase<Dashboard> {
   getDashboardContentById(id: string) {
     return this.get<Dashboard>(`/${id}`)
   }
+
+  addDashboardContent(dashboard: Dashboard) {
+    return super.persist({ ...dashboard.props })
+  }
+
+  updateDashboardContent(dashboard: Dashboard) {
+    return super.update({ ...dashboard }, dashboard.id!)
+  }
 }

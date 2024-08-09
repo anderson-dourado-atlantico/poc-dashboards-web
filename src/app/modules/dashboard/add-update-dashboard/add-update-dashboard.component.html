@@ -1,0 +1,20 @@
+<div class="add-update-content">
+  <div class="add-container" (click)="addFolder()" [attr.aria-hidden]="true">
+    <mat-label [ariaReadOnly]="true">Adicionar Nova Pasta</mat-label>
+  </div>
+  <div class="add-container" (click)="addDashboard()" [attr.aria-hidden]="true">
+    <mat-label [ariaReadOnly]="true">Adicionar Novo Dashboard</mat-label>
+  </div>
+
+  <div class="edit-button-container">
+    <button
+      mat-fab
+      class="edit-button"
+      [ngClass]="{ 'btn-color--error': editMode }"
+      (click)="_clickEditMode()"
+    >
+      <mat-icon *ngIf="!editMode">edit</mat-icon>
+      <mat-icon *ngIf="editMode">cancel</mat-icon>
+    </button>
+  </div>
+</div>

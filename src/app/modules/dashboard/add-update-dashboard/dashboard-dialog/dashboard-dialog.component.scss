@@ -1,0 +1,16 @@
+.dialog-title {
+  background-color: black;
+  color: white;
+}
+
+.form-content {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 350px;
+}
+
+mat-dialog-actions {
+  button {
+    border-radius: 8px;
+  }
+}

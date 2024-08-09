@@ -36,4 +36,8 @@ export class Dashboard {
   get folderParentId() {
     return this.props.folderParentId
   }
+
+  get alias() {
+    return this.props.alias
+  }
 }

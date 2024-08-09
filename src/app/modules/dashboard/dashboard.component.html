@@ -5,13 +5,23 @@
         #navigationHistory
         (onNavigationHistory)="navigateToHistory($event)"
       ></poc-navigation-history>
-      <!-- <div class="filter-panel">filters</div> -->
+
+      <poc-add-update-dashboard
+        #addUpdateDashboard
+        [folderParentId]="folderParentId"
+        (editModeChanged)="editModeChanged($event)"
+        (addContentDetected)="adddDashboardContent($event)"
+      ></poc-add-update-dashboard>
+
+      <mat-divider></mat-divider>
+
       <div class="content-panel">
         <poc-dashboard-item
           class="dash-item"
-          *ngFor="let item of dashboardContent"
+          *ngFor="let item of dashboardContentList"
           [dashboardItem]="item"
-          (onAccessContent)="goToContent($event)"
+          [disabled]="editMode"
+          (onAccessContent)="accessContent($event)"
         ></poc-dashboard-item>
       </div>
     </div>

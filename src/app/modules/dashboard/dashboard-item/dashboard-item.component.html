@@ -1,5 +1,11 @@
 <div class="dash-content">
-  <button mat-fab extended class="dash-button" (click)="_showContent()">
+  <button
+    mat-fab
+    extended
+    class="dash-button"
+    [ngClass]="{ 'btn-disabled': disabled() }"
+    (click)="_itemPressed()"
+  >
     <mat-icon>{{ typeIcon() }}</mat-icon
     >{{ dashboardItem().name }}
   </button>

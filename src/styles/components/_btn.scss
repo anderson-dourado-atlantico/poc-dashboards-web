@@ -6,18 +6,24 @@ $theme: mat.define-theme() !default;
 // ---------------------- ELEMENT ----------------------
 // -------------------- MODIFICATION -------------------
 .btn-color {
-  &--error {
+  & {
     @include mat.button-color($theme, $color-variant: error);
     @include mat.icon-button-color($theme, $color-variant: error);
+    @include mat.icon-color($theme, $color-variant: error);
+    @include mat.fab-color($theme, $color-variant: tertiary);
   }
 
   &--secondary {
     @include mat.button-color($theme, $color-variant: secondary);
     @include mat.icon-button-color($theme, $color-variant: secondary);
+    @include mat.icon-color($theme, $color-variant: secondary);
+    @include mat.fab-color($theme, $color-variant: secondary);
   }
 
   &--tertiary {
     @include mat.button-color($theme, $color-variant: tertiary);
     @include mat.icon-button-color($theme, $color-variant: tertiary);
+    @include mat.icon-color($theme, $color-variant: tertiary);
+    @include mat.fab-color($theme, $color-variant: tertiary);
   }
 }

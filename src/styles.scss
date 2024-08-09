@@ -1,8 +1,6 @@
 @use '@angular/material' as mat;
 
 @use 'styles/theme/orange-brown-theme';
-@use 'styles/theme/blue-sky-theme';
-@use 'styles/theme/cyan-orange-theme';
 
 $my-theme: orange-brown-theme.$orange-brown-theme;
 
@@ -10,9 +8,11 @@ $my-theme: orange-brown-theme.$orange-brown-theme;
   $theme: $my-theme
 );
 
-html {
+body {
   @include mat.all-component-themes($my-theme);
 }
+
+@include mat.core();
 
 @import 'styles/abstracts/mixins';
 

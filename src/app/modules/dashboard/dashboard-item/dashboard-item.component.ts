@@ -6,16 +6,18 @@ import {
   Dashboard,
   DashboardType,
 } from '../../../shared/models/dashboard.model'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'poc-dashboard-item',
   standalone: true,
-  imports: [MatIconModule, MatRippleModule, MatButtonModule],
+  imports: [CommonModule, MatIconModule, MatRippleModule, MatButtonModule],
   templateUrl: './dashboard-item.component.html',
   styleUrl: './dashboard-item.component.scss',
 })
 export class DashboardItemComponent {
   dashboardItem = input.required<Dashboard>()
+  disabled = input<boolean>(false)
   onAccessContent = output<Dashboard>()
 
   typeIcon = computed(() => {
@@ -26,7 +28,7 @@ export class DashboardItemComponent {
     return 'bar_chart_4_bars'
   })
 
-  _showContent() {
+  _itemPressed() {
     this.onAccessContent.emit(this.dashboardItem())
   }
 }

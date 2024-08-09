@@ -1,0 +1,45 @@
+<h2 mat-dialog-title class="dialog-title">{{ titleDialog }}</h2>
+
+<mat-divider style="border: 0px"></mat-divider>
+
+<mat-dialog-content>
+  <form class="form-content" [formGroup]="form!" role="form">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Nome</mat-label>
+      <input
+        id="name"
+        matInput
+        cdkFocusInitial
+        formControlName="name"
+        placeholder="Nome para o conteúdo"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Alias</mat-label>
+      <input
+        id="alias"
+        matInput
+        formControlName="alias"
+        placeholder="Alias para o conteúdo"
+      />
+    </mat-form-field>
+    @if (form.get('type')?.value === DashboardType.ITEM) {
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>Link de Acesso</mat-label>
+        <input
+          id="embeddedLink"
+          matInput
+          formControlName="embeddedLink"
+          placeholder="Link para o conteúdo"
+        />
+      </mat-form-field>
+    }
+  </form>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions>
+  <button mat-button (click)="cancelarAcao()">Cancelar</button>
+  <button mat-flat-button (click)="incluirAcao()">INCLUIR</button>
+</mat-dialog-actions>

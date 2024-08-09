@@ -12,5 +12,11 @@
     padding-left: 15px;
     background: #dddeed;
     border-radius: 5px;
+
+    font-size: 1.3rem;
+  }
+
+  .btn-disabled {
+    filter: brightness(80%);
   }
 }
