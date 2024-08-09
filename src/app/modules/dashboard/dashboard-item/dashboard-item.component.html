@@ -6,7 +6,18 @@
     [ngClass]="{ 'btn-disabled': disabled() }"
     (click)="_itemPressed()"
   >
-    <mat-icon>{{ typeIcon() }}</mat-icon
-    >{{ dashboardItem().name }}
+    <mat-icon>{{ typeIcon() }}</mat-icon>
+
+    <div class="text-button-container">
+      <span>{{ dashboardItem().name }}</span>
+      <div *ngIf="!disabled()" class="delete-icon-container">
+        <mat-icon
+          (click)="
+            _deleteItem(); $event.preventDefault(); $event.stopPropagation()
+          "
+          >delete</mat-icon
+        >
+      </div>
+    </div>
   </button>
 </div>

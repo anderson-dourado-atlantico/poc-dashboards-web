@@ -41,5 +41,7 @@
 
 <mat-dialog-actions>
   <button mat-button (click)="cancelarAcao()">Cancelar</button>
-  <button mat-flat-button (click)="incluirAcao()">INCLUIR</button>
+  <button mat-flat-button (click)="incluirAcao()">
+    {{ editMode ? 'ATUALIZAR' : 'INCLUIR' }}
+  </button>
 </mat-dialog-actions>

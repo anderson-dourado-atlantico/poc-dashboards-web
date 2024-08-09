@@ -28,6 +28,10 @@ export class DashboardService extends ServiceBase<Dashboard> {
   }
 
   updateDashboardContent(dashboard: Dashboard) {
-    return super.update({ ...dashboard }, dashboard.id!)
+    return super.update({ ...dashboard.props }, dashboard.id!)
+  }
+
+  deleteDashboardContent(id: string) {
+    return super.delete(id)
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject, model, OnInit } from '@angular/core'
+import { Component, inject, OnInit } from '@angular/core'
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -45,29 +45,26 @@ import { MatDividerModule } from '@angular/material/divider'
 export class DashboardDialogComponent implements OnInit {
   titleDialog = 'Adicionar nova Pasta'
   DashboardType = DashboardType
+  editMode = false
 
-  modelData: DashboardProps = {
-    name: '',
-    alias: '',
-    folderParentId: '',
-    type: DashboardType.FOLDER,
-  }
-
-  readonly data = inject<Dashboard>(MAT_DIALOG_DATA)
+  readonly data = inject<Dashboard & { editMode: boolean }>(MAT_DIALOG_DATA)
   readonly dialogRef = inject(MatDialogRef<DashboardDialogComponent>)
-
-  readonly name = model(this.modelData.name)
-  readonly alias = model(this.modelData.alias)
 
   form: FormGroup = new FormGroup({})
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.editMode = this.data.editMode ?? false
+
     this.titleDialog =
       this.data.type === DashboardType.FOLDER
-        ? 'Adicionar nova Pasta'
-        : 'Adicionar novo Dashboard'
+        ? this.editMode
+          ? 'Atualizar Pasta'
+          : 'Adicionar nova Pasta'
+        : this.editMode
+          ? 'Atualizar Dashboard'
+          : 'Adicionar novo Dashboard'
 
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -77,6 +74,11 @@ export class DashboardDialogComponent implements OnInit {
       type: [DashboardType.FOLDER],
     })
     this.form.reset()
+
+    if (this.editMode) {
+      this.form.get('name')?.setValue(this.data.name)
+      this.form.get('alias')?.setValue(this.data.alias)
+    }
 
     this.form.get('type')?.setValue(this.data.type)
     this.form.get('folderParentId')?.setValue(this.data.folderParentId)

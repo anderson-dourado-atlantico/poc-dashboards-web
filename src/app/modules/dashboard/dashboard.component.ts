@@ -76,6 +76,23 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  deleteContent(item: Dashboard) {
+    console.log('Vai deletar o Dashboard => ' + item.name)
+
+    // this.chooseDialogService
+    //     .show({message: `Deseja deletar ${item.type === DashboardType.FOLDER? 'a Pasta' : 'o Dashboard'}`})
+    //     .subscribe(response => {
+    //        if(response === 'OK') {
+    //             deleteItem ......
+    //        }
+    //     })
+
+    this.dashbardService.deleteDashboardContent(item.id!).subscribe(() => {
+      console.log('Dashboard deletado com sucesso!!')
+      this.navigateToHistory(item.folderParentId ?? '')
+    })
+  }
+
   editContent(item: Dashboard) {
     this.addUpdateDashboardComponent()
       .updateValuesFor(item)
@@ -92,7 +109,7 @@ export class DashboardComponent implements OnInit {
   navigateToHistory(id: string) {
     if (id === '') {
       this.dashbardService.getAll().subscribe(boards => {
-        console.log(boards)
+        this.folderParentId = ''
         this.dashboardContentList = boards
       })
     } else {

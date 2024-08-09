@@ -53,15 +53,13 @@ export class AddUpdateDashboardComponent {
 
   updateValuesFor(item: Dashboard): Observable<Dashboard | null> {
     const dialogRef = this.dialog.open(DashboardDialogComponent, {
-      data: item,
+      data: { ...item, editMode: true },
     })
 
     return dialogRef.afterClosed().pipe(
-      // takeUntilDestroyed(),
-
       map((result: DashboardProps) => {
         if (result !== undefined) {
-          return new Dashboard(result)
+          return new Dashboard({ ...result, id: item.id })
         }
 
         return null

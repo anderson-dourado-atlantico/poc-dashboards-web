@@ -18,7 +18,9 @@ import { CommonModule } from '@angular/common'
 export class DashboardItemComponent {
   dashboardItem = input.required<Dashboard>()
   disabled = input<boolean>(false)
+
   onAccessContent = output<Dashboard>()
+  onDeleteDashboard = output<Dashboard>()
 
   typeIcon = computed(() => {
     if (this.dashboardItem().type === DashboardType.FOLDER) {
@@ -30,5 +32,9 @@ export class DashboardItemComponent {
 
   _itemPressed() {
     this.onAccessContent.emit(this.dashboardItem())
+  }
+
+  _deleteItem() {
+    this.onDeleteDashboard.emit(this.dashboardItem())
   }
 }
